@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Armas - Detalle</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1> Catálogo de Armas de Fuego</h1>
+        <p>Explora y haz clic en cualquier arma para ver sus detalles en una nueva pestaña.</p>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="openCategory(event, 'Pistolas')">Pistolas</button>
+            <button class="tab-button" onclick="openCategory(event, 'Revolveres')">Revólveres</button>
+            <button class="tab-button" onclick="openCategory(event, 'Escopetas')">Escopetas</button>
+            <button class="tab-button" onclick="openCategory(event, 'Rifles')">Rifles</button>
+            <button class="tab-button" onclick="openCategory(event, 'Subfusiles')">Subfusiles</button>
+        </div>
+
+        <div id="Pistolas" class="tab-content active-content">
+            <h2>Pistolas Semiautomáticas</h2>
+        </div>
+        <div id="Revolveres" class="tab-content">
+            <h2>Revólveres de Acción Doble</h2>
+        </div>
+        <div id="Escopetas" class="tab-content">
+            <h2>Escopetas de Caza y Tácticas</h2>
+        </div>
+        <div id="Rifles" class="tab-content">
+            <h2>Rifles de Asalto y Caza</h2>
+        </div>
+        <div id="Subfusiles" class="tab-content">
+            <h2>Subfusiles Ligeros</h2>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

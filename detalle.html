@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+        /* Estilos específicos para la página de detalle */
+        .detail-card {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 50px auto;
+        }
+        .detail-image {
+            display: block;
+            width: 100%;
+            max-height: 350px;
+            object-fit: contain;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .detail-info p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .detail-info strong {
+            color: #a00;
+        }
+        .back-button {
+            margin-top: 30px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #555;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .detail-description {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #eee;
+            background-color: #f9f9f9;
+            border-left: 5px solid #a00;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="detail-card">
+        <h1 id="detail-title">Cargando Detalle...</h1>
+        <div id="detail-content">
+            <p>Por favor, espere o regrese al <a href="index.html">Catálogo Principal</a>.</p>
+        </div>
+        <a href="index.html" class="back-button">← Volver al Catálogo</a>
+    </div>
+
+    <script>
+        // ESTA DATA DEBE COINCIDIR EXACTAMENTE con la data de script.js, incluyendo las rutas de IMAGENES LOCALES
+        const catalogData = {
+            Pistolas: [
+                { id: "Glock17", model: "Glock 17 Gen5", caliber: "9mm Parabellum", mechanism: "Semiautomática", price: "950 USD", imageUrl: "images/images.jpeg", detailUrl: "detalle.html?id=Glock17", description: "La pistola de servicio más popular del mundo, conocida por su fiabilidad y durabilidad. Es un arma ligera y precisa." },
+                { id: "SigP226", model: "Sig Sauer P226", caliber: ".40 S&W", mechanism: "Semiautomática DA/SA", price: "1250 USD", imageUrl: "images/Sig_P226_PM_Equinox.jpg", detailUrl: "detalle.html?id=SigP226", description: "Utilizada por fuerzas especiales alrededor del mundo, se destaca por su precisión y el sistema de doble/simple acción." },
+                { id: "Beretta92", model: "Beretta 92FS", caliber: "9mm Parabellum", mechanism: "Semiautomática", price: "890 USD", imageUrl: "images/images (1).jpeg", detailUrl: "detalle.html?id=Beretta92", description: "Pistola emblemática del ejército de EEUU (M9). Diseño clásico de cañón abierto que reduce el riesgo de fallos." }
+            ],
+            Revolveres: [
+                { id: "SWM686", model: "S&W M686", caliber: ".357 Magnum", mechanism: "Doble Acción", price: "1100 USD", imageUrl: "images/images (2).jpeg", detailUrl: "detalle.html?id=SWM686", description: "Revólver potente y versátil, ideal para tiro deportivo y defensa personal, con capacidad para 7 cartuchos." },
+                { id: "TaurusJudge", model: "Taurus Judge", caliber: ".45 Colt / .410", mechanism: "Doble Acción", price: "780 USD", imageUrl: "images/REV.-TAURUS-410_JUDGE-1200x1200.jpg", detailUrl: "detalle.html?id=TaurusJudge", description: "Único en su clase, puede disparar cartuchos de revólver y cartuchos de escopeta Calibre .410, excelente para defensa en el campo." }
+            ],
+            Escopetas: [
+                { id: "Remington870", model: "Remington 870", caliber: "Calibre 12", mechanism: "Corredera (Pump)", price: "620 USD", imageUrl: "images/14046_1.jpg", detailUrl: "detalle.html?id=Remington870", description: "Una de las escopetas de corredera más vendidas y confiables de todos los tiempos. Uso táctico y deportivo." },
+                { id: "BenelliM4", model: "Benelli M4", caliber: "Calibre 12", mechanism: "Semiautomática", price: "2400 USD", imageUrl: "images/images (3).jpeg", detailUrl: "detalle.html?id=BenelliM4", description: "Escopeta militar semiautomática usada por el Cuerpo de Marines de EE. UU. Destaca por su sistema de pistón de gas autoajustable." }
+            ],
+            Rifles: [
+                { id: "AR15", model: "AR-15 Estándar", caliber: "5.56x45mm", mechanism: "Semiautomático", price: "1500 USD", imageUrl: "images/images (4).jpeg", detailUrl: "detalle.html?id=AR15", description: "Plataforma de rifle moderna y modular, extremadamente popular en el mercado civil por su personalización y bajo retroceso." },
+                { id: "Remington700", model: "Remington 700", caliber: ".308 Win", mechanism: "Cerrojo", price: "980 USD", imageUrl: "images/Remington_Model_700.jpeg", detailUrl: "detalle.html?id=Remington700", description: "Rifle de cerrojo clásico, estándar de oro para rifles de caza y tiro de precisión. Conocido por su acción extremadamente precisa." }
+            ],
+            Subfusiles: [
+                { id: "MP5", model: "H&K MP5 (Civil)", caliber: "9mm Parabellum", mechanism: "Semiautomático", price: "2900 USD", imageUrl: "images/images (5).jpeg", detailUrl: "detalle.html?id=MP5", description: "Versión civil de un subfusil legendario, famoso por su sistema de retroceso retardado que ofrece gran control." },
+                { id: "CZScorpion", model: "CZ Scorpion Evo 3", caliber: "9mm Parabellum", mechanism: "Semiautomático", price: "1350 USD", imageUrl: "images/images (6).jpeg", detailUrl: "detalle.html?id=CZScorpion", description: "Diseño moderno y modular, popular por su tamaño compacto, ergonomía y cargadores de alta capacidad." }
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const weaponId = urlParams.get('id');
+            const contentDiv = document.getElementById('detail-content');
+            const titleElement = document.getElementById('detail-title');
+            
+            let foundWeapon = null;
+
+            // Busca el arma en todas las categorías
+            for (const category in catalogData) {
+                foundWeapon = catalogData[category].find(w => w.id === weaponId);
+                if (foundWeapon) break;
+            }
+
+            if (foundWeapon) {
+                // Actualiza el título y la barra del navegador
+                titleElement.textContent = foundWeapon.model + ' - Detalle Completo';
+                document.title = 'Detalle - ' + foundWeapon.model;
+
+                // Genera el contenido HTML del detalle
+                contentDiv.innerHTML = `
+                    <img src="${foundWeapon.imageUrl}" alt="${foundWeapon.model}" class="detail-image">
+                    <div class="detail-info">
+                        <p><strong>Calibre:</strong> <span class="caliber">${foundWeapon.caliber}</span></p>
+                        <p><strong>Mecanismo de Disparo:</strong> ${foundWeapon.mechanism}</p>
+                        <p><strong>Precio Estimado:</strong> <span class="price">${foundWeapon.price}</span></p>
+                    </div>
+                    <div class="detail-description">
+                        <h3>Descripción General</h3>
+                        <p>${foundWeapon.description}</p>
+                    </div>
+                `;
+            } else {
+                titleElement.textContent = 'Producto No Encontrado';
+                contentDiv.innerHTML = '<p>Lo sentimos, el arma que estás buscando no existe en nuestro catálogo. Verifica el enlace o regresa al catálogo principal.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
