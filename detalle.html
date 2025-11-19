@@ -15,6 +15,12 @@
             max-width: 800px;
             margin: 50px auto;
         }
+        .detail-card h2 { /* Estilo específico para el título del producto */
+            color: #000;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
         .detail-image {
             display: block;
             width: 100%;
@@ -50,21 +56,20 @@
 </head>
 <body>
 
-    <div class="detail-card">
-        <h1 id="detail-title">Cargando Detalle...</h1>
-        <div id="detail-content">
-            <p>Por favor, espere o regrese al <a href="index.html">Catálogo Principal</a>.</p>
+    <div class="container"> <h1>Catálogo de Armas de Fuego</h1> <div class="detail-card">
+            <h2 id="detail-title">Cargando Detalle...</h2> <div id="detail-content">
+                <p>Por favor, espere o regrese al <a href="index.html">Catálogo Principal</a>.</p>
+            </div>
+            <a href="index.html" class="back-button">← Volver al Catálogo</a>
         </div>
-        <a href="index.html" class="back-button">← Volver al Catálogo</a>
-    </div>
-
-    <script>
+        
+    </div> <script>
         // ESTA DATA DEBE COINCIDIR EXACTAMENTE con la data de script.js, incluyendo las rutas de IMAGENES LOCALES
         const catalogData = {
             Pistolas: [
-                { id: "Glock17", model: "Glock 17 Gen5", caliber: "9mm Parabellum", mechanism: "Semiautomática", price: "950 USD", imageUrl: "images/images.jpeg", detailUrl: "detalle.html?id=Glock17", description: "La pistola de servicio más popular del mundo, conocida por su fiabilidad y durabilidad. Es un arma ligera y precisa." },
-                { id: "SigP226", model: "Sig Sauer P226", caliber: ".40 S&W", mechanism: "Semiautomática DA/SA", price: "1250 USD", imageUrl: "images/Sig_P226_PM_Equinox.jpg", detailUrl: "detalle.html?id=SigP226", description: "Utilizada por fuerzas especiales alrededor del mundo, se destaca por su precisión y el sistema de doble/simple acción." },
-                { id: "Beretta92", model: "Beretta 92FS", caliber: "9mm Parabellum", mechanism: "Semiautomática", price: "890 USD", imageUrl: "images/images (1).jpeg", detailUrl: "detalle.html?id=Beretta92", description: "Pistola emblemática del ejército de EEUU (M9). Diseño clásico de cañón abierto que reduce el riesgo de fallos." }
+                { id: "Glock17", model: "Glock 17 Gen5", caliber: "9mm Parabellum", mechanism: "Semiautomática", price: "300 USD", imageUrl: "images/images.jpeg", detailUrl: "detalle.html?id=Glock17", description: "La pistola de servicio más popular del mundo, conocida por su fiabilidad y durabilidad. Es un arma ligera y precisa." },
+                { id: "SigP226", model: "Sig Sauer P226", caliber: ".40 S&W", mechanism: "Semiautomática DA/SA", price: "500 USD", imageUrl: "images/Sig_P226_PM_Equinox.jpg", detailUrl: "detalle.html?id=SigP226", description: "Utilizada por fuerzas especiales alrededor del mundo, se destaca por su precisión y el sistema de doble/simple acción." },
+                { id: "Beretta92", model: "Beretta 92FS", caliber: "9mm Parabellum", mechanism: "Semiautomática", price: "650 USD", imageUrl: "images/images (1).jpeg", detailUrl: "detalle.html?id=Beretta92", description: "Pistola emblemática del ejército de EEUU (M9). Diseño clásico de cañón abierto que reduce el riesgo de fallos." }
             ],
             Revolveres: [
                 { id: "SWM686", model: "S&W M686", caliber: ".357 Magnum", mechanism: "Doble Acción", price: "1100 USD", imageUrl: "images/images (2).jpeg", detailUrl: "detalle.html?id=SWM686", description: "Revólver potente y versátil, ideal para tiro deportivo y defensa personal, con capacidad para 7 cartuchos." },
@@ -88,7 +93,9 @@
             const urlParams = new URLSearchParams(window.location.search);
             const weaponId = urlParams.get('id');
             const contentDiv = document.getElementById('detail-content');
-            const titleElement = document.getElementById('detail-title');
+            
+            // El elemento ahora es un H2 en lugar de H1
+            const titleElement = document.getElementById('detail-title'); 
             
             let foundWeapon = null;
 
@@ -99,8 +106,8 @@
             }
 
             if (foundWeapon) {
-                // Actualiza el título y la barra del navegador
-                titleElement.textContent = foundWeapon.model + ' - Detalle Completo';
+                // Actualiza el título del producto y la barra del navegador
+                titleElement.textContent = foundWeapon.model;
                 document.title = 'Detalle - ' + foundWeapon.model;
 
                 // Genera el contenido HTML del detalle
