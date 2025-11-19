@@ -41,7 +41,7 @@ function createProductCard(weapon) {
         <p class="product-detail"><strong>Calibre:</strong> <span class="caliber">${weapon.caliber}</span></p>
         <p class="product-detail"><strong>Mecanismo:</strong> ${weapon.mechanism}</p>
         <div class="price">${weapon.price}</div>
-        <button class="buy-button">Añadir al Carrito</button>
+        <button class="buy-button">Descripcion De El Arma</button>
     `;
     
     link.appendChild(card);
@@ -86,7 +86,26 @@ function openCategory(evt, categoryName) {
     loadCatalog(categoryName);
 }
 
-// 4. Inicialización al cargar la página
+// 4. Lógica para el menú desplegable y el buscador
+function toggleMenu() {
+    document.getElementById("dropdownMenu").classList.toggle("show");
+}
+
+function toggleSearch() {
+    const searchContainer = document.getElementById('searchContainer');
+    // Cierra el menú desplegable al activar/desactivar el buscador
+    document.getElementById("dropdownMenu").classList.remove("show"); 
+    
+    if (searchContainer.style.display === 'none' || searchContainer.style.display === '') {
+        searchContainer.style.display = 'block';
+        document.getElementById('searchInput').focus(); // Enfocar el campo para escribir
+    } else {
+        searchContainer.style.display = 'none';
+    }
+}
+
+
+// 5. Inicialización al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("Pistolas").style.display = "block";
     loadCatalog('Pistolas');
