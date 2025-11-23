@@ -34,7 +34,6 @@ function createProductCard(weapon) {
     const card = document.createElement('div');
     card.classList.add('product-card');
 
-    // Usamos el nombre del archivo local en la ruta
     card.innerHTML = `
         <img src="${weapon.imageUrl}" alt="${weapon.model}" class="product-image">
         <h3 class="product-title">${weapon.model}</h3>
@@ -49,7 +48,6 @@ function createProductCard(weapon) {
     return link;
 }
 
-// 2. Función para cargar el catálogo
 function loadCatalog(category) {
     const contentDiv = document.getElementById(category);
     
@@ -64,7 +62,6 @@ function loadCatalog(category) {
     }
 }
 
-// 3. Función para manejar el cambio de pestañas
 function openCategory(evt, categoryName) {
     let i, tabcontent, tabbuttons;
 
@@ -86,7 +83,6 @@ function openCategory(evt, categoryName) {
     loadCatalog(categoryName);
 }
 
-// 4. Lógica para el menú desplegable y el buscador
 function toggleMenu() {
     document.getElementById("dropdownMenu").classList.toggle("show");
 }
@@ -105,7 +101,6 @@ function toggleSearch() {
 }
 
 
-// 5. Inicialización al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("Pistolas").style.display = "block";
     loadCatalog('Pistolas');

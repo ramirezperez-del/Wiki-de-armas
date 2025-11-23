@@ -18,7 +18,7 @@ body {
     width: 95%;
 }
 
-/* 🎯 ESTILO PARA EL TÍTULO PRINCIPAL (Catálogo de Armas de Fuego) */
+/*  ESTILO PARA EL TÍTULO PRINCIPAL (Catálogo de Armas de Fuego) */
 h1 {
     color: #a00; /* Rojo oscuro */
     text-align: center; /* Centrado horizontal */
@@ -27,7 +27,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* 🎯 ESTILO PARA TÍTULOS DE PÁGINA/SECCIÓN */
+/*  ESTILO PARA TÍTULOS DE PÁGINA/SECCIÓN */
 h2 {
     color: #555;
     margin-top: 0;
